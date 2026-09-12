@@ -26,7 +26,7 @@
     --font-display: 'Fraunces', serif;
     --font-ui: 'Inter', sans-serif;
 
-    --sidebar-w: 250px;
+    --sidebar-w: 270px;
     --radius: 2px;
   }
 
@@ -117,7 +117,7 @@
   .cat-btn{
     width:100%;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:space-between;
     gap:10px;
     background:transparent;
@@ -125,12 +125,14 @@
     color: var(--paper);
     padding:10px 12px;
     border-radius: var(--radius);
-    font-size:14.5px;
+    font-size:14px;
+    line-height:1.35;
     text-align:left;
     cursor:pointer;
     border-left:2px solid transparent;
     transition: background-color .15s ease, border-color .15s ease, color .15s ease;
   }
+  .cat-btn span:first-child{ padding-top:1px; }
   .cat-btn:hover{ background: rgba(255,255,255,.03); }
   .cat-btn.active{
     border-left-color: var(--gold);
@@ -479,10 +481,12 @@
 const TOTAL_SLIDES = 31;
 
 const CATEGORIES = [
-  { id: 'all',      label: 'ทั้งหมด',            range: null      },
-  { id: 'cover',    label: 'หน้าปก',              range: [1, 1]    },
-  { id: 'tools',    label: 'ภาพรวมเครื่องมือ',    range: [2, 20]   },
-  { id: 'workflow', label: 'เวิร์กโฟลว์ AI',       range: [21, 31]  },
+  { id: 'all',   label: 'ทั้งหมด',                    range: null      },
+  { id: 'p1',    label: 'สร้างรูปด้วย AI',             range: [1, 6]    },
+  { id: 'p2',    label: 'กราฟความสัมพันธ์คณิตศาสตร์',  range: [7, 12]   },
+  { id: 'p3',    label: 'Diagram จาก Mermaid Code',    range: [13, 18]  },
+  { id: 'p4',    label: 'บทความ/หนังสือจาก LaTeX',     range: [19, 25]  },
+  { id: 'p5',    label: 'สไลด์สรุปงานด้วย NotebookLM', range: [26, 31]  },
 ];
 
 function categoryOf(n){
