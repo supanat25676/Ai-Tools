@@ -13,15 +13,15 @@
      DESIGN TOKENS
      ============================================================ */
   :root{
-    --void:      #0a0e1a;
-    --panel:     #10162a;
-    --panel-2:   #151d36;
-    --line:      #262f4a;
-    --paper:     #eae4d6;
-    --muted:     #8b96b8;
-    --gold:      #c9a24b;
-    --gold-dim:  #8a7238;
-    --teal:      #6fa8ae;
+    --void:      #140822;
+    --panel:     #1e1036;
+    --panel-2:   #2a1650;
+    --line:      #3c2460;
+    --paper:     #f3ecff;
+    --muted:     #a696c4;
+    --gold:      #ff5fa2;
+    --gold-dim:  #b23a70;
+    --teal:      #b48cff;
 
     --font-display: 'Fraunces', serif;
     --font-ui: 'Inter', sans-serif;
@@ -36,8 +36,8 @@
     margin:0;
     min-height:100vh;
     background:
-      radial-gradient(1100px 600px at 12% -10%, rgba(201,162,75,.08), transparent 60%),
-      radial-gradient(900px 700px at 100% 110%, rgba(111,168,174,.08), transparent 60%),
+      radial-gradient(1100px 600px at 12% -10%, rgba(255,95,162,.10), transparent 60%),
+      radial-gradient(900px 700px at 100% 110%, rgba(139,92,246,.12), transparent 60%),
       var(--void);
     color: var(--paper);
     font-family: var(--font-ui);
@@ -174,6 +174,7 @@
     border:1px solid var(--line);
     overflow:hidden;
     cursor: zoom-in;
+    box-shadow: 0 30px 80px -30px rgba(255,95,162,.18), 0 0 0 1px rgba(255,255,255,.02);
   }
   /* viewfinder corner ticks — the one bold recurring motif */
   .stage-frame::before,
@@ -338,7 +339,7 @@
      ============================================================ */
   .lightbox{
     position:fixed; inset:0;
-    background: rgba(6,8,15,.96);
+    background: rgba(10,4,20,.97);
     display:none;
     align-items:center;
     justify-content:center;
