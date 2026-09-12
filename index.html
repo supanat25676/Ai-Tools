@@ -3,130 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI TOOLS Presentation Portfolio | Supanat25676</title>
+    <title>AI TOOLS Presentation | Space Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS Variables & Resets --- */
+        /* --- Space Theme Styling --- */
         :root {
-            --bg-color: #0d0e12;
-            --container-bg: #16181d;
+            --bg-color: #050714;
+            --card-bg: #0c102b;
             --text-primary: #ffffff;
-            --text-secondary: #a0a6b5;
-            --accent: #2ecc71; /* สีเขียวเน้น */
-            --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            --transition: all 0.3s ease;
-            --font-main: 'IBM Plex Sans Thai', 'Poppins', sans-serif;
+            --text-secondary: #a6b4c9;
+            --neon-blue: #00f0ff;
+            --neon-purple: #9d4edd;
+            --accent-pink: #ff007f;
+            --font-title: 'Orbitron', sans-serif;
+            --font-body: 'Prompt', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-main); background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            /* Background Space Stars Effect */
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, var(--neon-blue), rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, var(--neon-purple), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 160px 120px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+        }
 
-        /* --- Global Layout --- */
-        .main-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
 
         /* --- Header Section --- */
-        header { background-color: var(--container-bg); padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        header h1 { font-size: 3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -1px; }
-        header h1 span { color: var(--accent); }
-        header p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
 
-        /* --- Portfolio Gallery Section --- */
-        .gallery-section { margin-bottom: 60px; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .title-glow {
+            font-family: var(--font-title);
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            margin-bottom: 10px;
+        }
 
-        .slide-card { background-color: var(--container-bg); border-radius: 16px; overflow: hidden; box-shadow: var(--card-shadow); transition: var(--transition); border: 1px solid rgba(255,255,255,0.03); display: flex; flex-direction: column; }
-        .slide-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.7); border-color: rgba(46, 204, 113, 0.3); }
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
 
-        .image-container { width: 100%; position: relative; overflow: hidden; }
-        .image-container img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
-        .slide-card:hover .image-container img { transform: scale(1.05); }
+        /* --- Grid Layout --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 30px;
+            padding: 20px 0 60px;
+        }
 
-        .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-title { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin-bottom: 5px; }
-        .card-tag { display: inline-block; background-color: rgba(46, 204, 113, 0.1); color: var(--accent); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+        /* --- Space Card Design --- */
+        .space-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(0, 240, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
 
-        /* --- Footer Section --- */
-        footer { background-color: var(--container-bg); padding: 30px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; color: var(--text-secondary); }
-        footer a:hover { color: var(--accent); }
+        .space-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4), 0 0 10px rgba(157, 78, 221, 0.3);
+        }
 
-        /* --- Responsive Queries --- */
+        .img-wrapper {
+            width: 100%;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .space-card:hover .img-wrapper img {
+            transform: scale(1.04);
+        }
+
+        .card-info {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(157, 78, 221, 0.2);
+            color: var(--neon-blue);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+            .title-glow { font-size: 2.2rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="main-container">
-            <h1>AI <span>TOOLS</span></h1>
-            <p>A Curated Collection of Innovative AI-Powered Tools & Applications, presented by Supanat25676</p>
-        }
+    <header class="container">
+        <h1 class="title-glow">AI TOOLS GALAXIES</h1>
+        <p>🚀 สไลด์นำเสนอผลงานและเครื่องมือ AI ในรูปแบบธีมสำรวจอวกาศ</p>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-container gallery-section">
-        <div class="gallery-grid">
-            <!-- โค้ดส่วนนี้รองรับสไลด์ 1 ถึง 31 ตามไฟล์ของคุณ -->
-            <div class="slide-card">
-                <div class="image-container"><img src="1.png" alt="Slide 1"></div>
-                <div class="card-content">
-                    <h3 class="card-title">Project Title 1</h3>
-                    <span class="card-tag">Creative</span>
-                </div>
-            </div>
-            <div class="slide-card">
-                <div class="image-container"><img src="2.png" alt="Slide 2"></div>
-                <div class="card-content">
-                    <h3 class="card-title">Project Title 2</h3>
-                    <span class="card-tag">Productivity</span>
-                </div>
-            </div>
-            <div class="slide-card">
-                <div class="image-container"><img src="3.png" alt="Slide 3"></div>
-                <div class="card-content">
-                    <h3 class="card-title">Project Title 3</h3>
-                    <span class="card-tag">Analysis</span>
-                </div>
-            </div>
-            <!-- ดึงรูป 4 ถึง 31 มาแสดงแบบ Grid เชิงลึก (ย่อโค้ดเพื่อความกระชับ) -->
-            <div class="slide-card"><div class="image-container"><img src="4.png"></div><div class="card-content"><h3 class="card-title">Slide 4</h3><span class="card-tag">Tool Presentation</span></div></div>
-            <div class="slide-card"><div class="image-container"><img src="5.png"></div><div class="card-content"><h3 class="card-title">Slide 5</h3><span class="card-tag">Workflow</span></div></div>
-            <!-- ... (เพิ่มสไลด์อื่นๆ 6-31 ได้ตามรูปแบบด้านบน) ... -->
-            <script>
-                // สคริปต์แบบสั้นเพื่อดึงรูป 6 ถึง 31 มาแสดงต่อโดยอัตโนมัติ (เพื่อไม่ให้โค้ด HTML ยาวเกินไป)
-                const grid = document.querySelector('.gallery-grid');
-                const start = 6;
-                const end = 31;
-
-                for (let i = start; i <= end; i++) {
-                    const card = document.createElement('div');
-                    card.className = 'slide-card';
-                    card.innerHTML = `
-                        <div class="image-container"><img src="${i}.png" alt="Slide ${i}"></div>
-                        <div class="card-content">
-                            <h3 class="card-title">Slide ${i}</h3>
-                            <span class="card-tag">Tool Presentation</span>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                }
-            </script>
+    <main class="container">
+        <div class="gallery-grid" id="slide-gallery">
+            <!-- ดึงสไลด์ 1 ถึง 31 มาแสดง -->
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="main-container">
-            <p>&copy; 2026 Supanat25676. All rights reserved.</p>
-            <p>Powered by <a href="https://github.com/supanat25676/Ai-Tools" target="_blank">GitHub Pages</a></p>
-        }
+        <div class="container">
+            <p>&copy; 2026 Supanat25676 | Built with GitHub Pages</p>
+        </div>
     </footer>
+
+    <script>
+        // สคริปต์โหลดรูปสไลด์ 1 - 31 อัตโนมัติ
+        const gallery = document.getElementById('slide-gallery');
+        const totalSlides = 31;
+
+        for (let i = 1; i <= totalSlides; i++) {
+            const card = document.createElement('div');
+            card.className = 'space-card';
+            card.innerHTML = `
+                <div class="img-wrapper">
+                    <img src="${i}.png" alt="Slide ${i}" loading="lazy">
+                </div>
+                <div class="card-info">
+                    <span class="card-title">SLIDE ${i.toString().padStart(2, '0')}</span>
+                    <span class="badge">ORBIT</span>
+                </div>
+            `;
+            gallery.appendChild(card);
+        }
+    </script>
 
 </body>
 </html>
