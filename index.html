@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* --- Space Theme Styling --- */
         :root {
             --bg-color: #050714;
             --card-bg: #0c102b;
@@ -28,7 +27,6 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
-            /* Background Space Stars Effect */
             background-image: 
                 radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(2px 2px at 40px 70px, var(--neon-blue), rgba(0,0,0,0)),
@@ -40,13 +38,7 @@
 
         .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- Header Section --- */
-        header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            position: relative;
-        }
-
+        header { text-align: center; padding: 60px 20px 40px; }
         .title-glow {
             font-family: var(--font-title);
             font-size: 3.2rem;
@@ -58,106 +50,114 @@
             text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
             margin-bottom: 10px;
         }
+        header p { color: var(--text-secondary); font-size: 1.1rem; }
 
-        header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        /* --- Grid Layout --- */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
             padding: 20px 0 60px;
         }
 
-        /* --- Space Card Design --- */
         .space-card {
             background-color: var(--card-bg);
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(0, 240, 255, 0.2);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(0, 240, 255, 0.05);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-
         .space-card:hover {
             transform: translateY(-8px) scale(1.02);
             border-color: var(--neon-blue);
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4), 0 0 10px rgba(157, 78, 221, 0.3);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
         }
 
-        .img-wrapper {
-            width: 100%;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .img-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-
-        .space-card:hover .img-wrapper img {
-            transform: scale(1.04);
-        }
+        .img-wrapper img { width: 100%; height: auto; display: block; }
 
         .card-info {
-            padding: 16px 20px;
+            padding: 14px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        .card-title {
-            font-family: var(--font-title);
-            font-size: 1.1rem;
-            color: var(--text-primary);
-        }
-
+        .card-title { font-family: var(--font-title); font-size: 1rem; color: var(--text-primary); }
         .badge {
             font-size: 0.75rem;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
             background: rgba(157, 78, 221, 0.2);
             color: var(--neon-blue);
             border: 1px solid rgba(0, 240, 255, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        /* --- Fullscreen Modal (ป๊อปอัปขยายสไลด์) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(5, 7, 20, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
         }
+        .modal-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px; right: 35px;
+            color: var(--text-primary);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .close-btn:hover { color: var(--accent-pink); }
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(12, 16, 43, 0.8);
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            font-size: 30px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .nav-btn:hover { background: var(--neon-blue); color: #000; }
+        .prev-btn { left: 30px; }
+        .next-btn { right: 30px; }
 
-        @media (max-width: 768px) {
-            .title-glow { font-size: 2.2rem; }
-            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-        }
+        footer { text-align: center; padding: 30px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); color: var(--text-secondary); }
     </style>
 </head>
 <body>
 
     <header class="container">
         <h1 class="title-glow">AI TOOLS GALAXIES</h1>
-        <p>🚀 สไลด์นำเสนอผลงานและเครื่องมือ AI ในรูปแบบธีมสำรวจอวกาศ</p>
+        <p>🚀 คลิกที่รูปสไลด์เพื่อเปิดดูภาพขนาดใหญ่</p>
     </header>
 
     <main class="container">
-        <div class="gallery-grid" id="slide-gallery">
-            <!-- ดึงสไลด์ 1 ถึง 31 มาแสดง -->
-        </div>
+        <div class="gallery-grid" id="slide-gallery"></div>
     </main>
+
+    <!-- Modal Box สำหรับขยายรูปภาพ -->
+    <div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <button class="nav-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+        <img class="modal-content" id="modalImg">
+        <button class="nav-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+    </div>
 
     <footer>
         <div class="container">
@@ -166,25 +166,55 @@
     </footer>
 
     <script>
-        // สคริปต์โหลดรูปสไลด์ 1 - 31 อัตโนมัติ
         const gallery = document.getElementById('slide-gallery');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
         const totalSlides = 31;
+        let currentIndex = 1;
 
+        // สร้างรายการสไลด์
         for (let i = 1; i <= totalSlides; i++) {
             const card = document.createElement('div');
             card.className = 'space-card';
+            card.onclick = () => openModal(i);
             card.innerHTML = `
                 <div class="img-wrapper">
                     <img src="${i}.png" alt="Slide ${i}" loading="lazy">
                 </div>
                 <div class="card-info">
                     <span class="card-title">SLIDE ${i.toString().padStart(2, '0')}</span>
-                    <span class="badge">ORBIT</span>
+                    <span class="badge">VIEW</span>
                 </div>
             `;
             gallery.appendChild(card);
         }
-    </script>
 
+        function openModal(index) {
+            currentIndex = index;
+            modal.style.display = "flex";
+            modalImg.src = `${currentIndex}.png`;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex > totalSlides) currentIndex = 1;
+            if (currentIndex < 1) currentIndex = totalSlides;
+            modalImg.src = `${currentIndex}.png`;
+        }
+
+        // ปิด modal เมื่อกดปุ่ม Esc หรือกดพื้นที่ว่างข้างนอก
+        window.onclick = function(event) {
+            if (event.target == modal) closeModal();
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowLeft") changeSlide(-1);
+            if (e.key === "ArrowRight") changeSlide(1);
+        });
+    </script>
 </body>
 </html>
