@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUMINA MESH // AI TOOLS PORTFOLIO</title>
+    <title>AI TOOLS GALAXIES // SUPANAT PORTFOLIO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #070913;
-            --panel-bg: rgba(13, 17, 38, 0.7);
-            --card-bg: rgba(20, 26, 56, 0.5);
+            --bg-dark: #050714;
+            --panel-bg: rgba(12, 16, 43, 0.75);
+            --card-bg: rgba(15, 22, 58, 0.6);
             --accent-cyan: #00f0ff;
-            --accent-magenta: #d946ef;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-glow: rgba(0, 240, 255, 0.2);
+            --accent-purple: #9d4edd;
+            --accent-pink: #ff007f;
+            --text-main: #ffffff;
+            --text-muted: #a6b4c9;
+            --border-glow: rgba(0, 240, 255, 0.25);
             --font-head: 'Orbitron', sans-serif;
             --font-body: 'Prompt', sans-serif;
         }
@@ -30,24 +31,32 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            /* Starry Space Background Effect */
             background-image: 
-                radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(217, 70, 239, 0.08) 0%, transparent 40%);
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, var(--accent-cyan), rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, var(--accent-purple), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(157, 78, 221, 0.1) 0%, transparent 40%);
+            background-repeat: repeat;
+            background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100% 100%, 100% 100%;
             background-attachment: fixed;
         }
 
         /* --- Navbar Area --- */
         .navbar {
-            background: rgba(7, 9, 19, 0.85);
+            background: rgba(5, 7, 20, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-glow);
             position: sticky;
             top: 0;
             z-index: 100;
-            padding: 15px 40px;
+            padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         .brand {
@@ -55,18 +64,22 @@
             font-size: 1.4rem;
             font-weight: 900;
             letter-spacing: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
         }
 
         .nav-status {
-            font-size: 0.85rem;
+            font-family: var(--font-head);
+            font-size: 0.8rem;
             color: var(--accent-cyan);
             border: 1px solid var(--border-glow);
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
             background: rgba(0, 240, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+            letter-spacing: 1px;
         }
 
         /* --- Main Layout Grid --- */
@@ -88,33 +101,38 @@
             border: 1px solid var(--border-glow);
             padding: 24px;
             height: fit-content;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
         }
 
         .sidebar-title {
             font-family: var(--font-head);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--accent-cyan);
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 15px;
             text-transform: uppercase;
         }
 
         .sidebar-menu { list-style: none; }
         .sidebar-menu li {
-            padding: 10px 14px;
+            padding: 12px 16px;
             margin-bottom: 8px;
             border-radius: 8px;
             color: var(--text-muted);
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
             font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .sidebar-menu li.active, .sidebar-menu li:hover {
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.12);
+            color: var(--text-main);
             border-left: 3px solid var(--accent-cyan);
+            box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.1);
         }
 
         /* --- Content Area --- */
@@ -125,13 +143,17 @@
             border: 1px solid var(--border-glow);
             border-radius: 16px;
             padding: 30px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
         }
 
         .hero-banner h1 {
             font-family: var(--font-head);
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 8px;
+            background: linear-gradient(90deg, #ffffff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-banner p { color: var(--text-muted); font-size: 1rem; }
@@ -140,23 +162,24 @@
         .mesh-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 24px;
         }
 
         .mesh-card {
             background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            border: 1px solid rgba(0, 240, 255, 0.15);
             overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             cursor: pointer;
             position: relative;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
         }
 
         .mesh-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px) scale(1.02);
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.35), 0 0 10px rgba(157, 78, 221, 0.2);
         }
 
         .card-img-holder {
@@ -173,81 +196,233 @@
             transition: transform 0.4s ease;
         }
 
-        .mesh-card:hover .card-img-holder img { transform: scale(1.05); }
+        .mesh-card:hover .card-img-holder img { transform: scale(1.06); }
 
         .card-meta {
-            padding: 14px;
+            padding: 14px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(12, 16, 43, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .card-meta .title { font-family: var(--font-head); font-size: 0.85rem; }
+        .card-meta .title { font-family: var(--font-head); font-size: 0.85rem; color: var(--text-main); }
         .card-meta .tag {
-            font-size: 0.7rem;
-            color: var(--accent-magenta);
-            border: 1px solid rgba(217, 70, 239, 0.3);
-            padding: 2px 8px;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            border: 1px solid var(--border-glow);
+            padding: 2px 10px;
             border-radius: 12px;
+            background: rgba(0, 240, 255, 0.08);
+            letter-spacing: 0.5px;
         }
 
-        /* --- Responsive Queries --- */
+        /* --- Fullscreen Modal Reader (ระบบอ่านสไลด์ขนาดใหญ่) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(5, 7, 20, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            padding: 20px;
+        }
+
+        .modal-wrapper {
+            position: relative;
+            max-width: 90vw;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 12px;
+            border: 1.5px solid var(--accent-cyan);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
+            object-fit: contain;
+        }
+
+        .modal-counter {
+            margin-top: 15px;
+            font-family: var(--font-head);
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 25px; right: 35px;
+            color: var(--text-main);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 1010;
+        }
+        .close-btn:hover { color: var(--accent-pink); }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(12, 16, 43, 0.85);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            font-size: 28px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1010;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+        .nav-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+        }
+        .prev-btn { left: 30px; }
+        .next-btn { right: 30px; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+
         @media (max-width: 1024px) {
-            .app-container { grid-template-columns: 1fr; }
+            .app-container { grid-template-columns: 1fr; padding: 20px; }
             .sidebar { display: none; }
+            .nav-btn { width: 40px; height: 40px; font-size: 20px; }
+            .prev-btn { left: 10px; }
+            .next-btn { right: 10px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header / Navbar -->
     <nav class="navbar">
-        <div class="brand">LUMINA // MESH</div>
-        <div class="nav-status">SYSTEM ONLINE</div>
+        <div class="brand">AI TOOLS // GALAXIES</div>
+        <div class="nav-status">GALAXY ONLINE</div>
     </nav>
 
     <div class="app-container">
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
-            <div class="sidebar-title">Categories</div>
+            <div class="sidebar-title">NAVIGATION MENU</div>
             <ul class="sidebar-menu">
-                <li class="active">All Slides (31)</li>
-                <li>AI Tools Overview</li>
-                <li>Workflows</li>
-                <li>Documentation</li>
+                <li class="active"><span>🪐 All Slides</span> <span>(31)</span></li>
+                <li onclick="openModal(1)"><span>🚀 Cover Slide</span></li>
+                <li onclick="openModal(2)"><span>🛠️ Tools Overview</span></li>
             </ul>
         </aside>
 
-        <!-- Main Workspace -->
+        <!-- Main Content Area -->
         <main class="content-area">
             <div class="hero-banner">
-                <h1>AI TOOLS PRESENTATION MESH</h1>
-                <p>Interactive Slide Deck & Resource Showcase</p>
+                <h1>AI TOOLS PRESENTATION GALAXIES</h1>
+                <p>🚀 พอร์ตโฟลิโอรวมเครื่องมือ AI อัจฉริยะ (คลิกที่สไลด์เพื่อเปิดอ่านสไลด์ใหญ่แบบสไลด์โชว์ได้ทันที)</p>
             </div>
 
             <div class="mesh-grid" id="mesh-container">
-                <!-- Javascript will load 31 cards dynamically -->
+                <!-- Javascript จะโหลดสไลด์ 1 - 31 มาวางที่นี่ -->
             </div>
         </main>
     </div>
 
+    <!-- Fullscreen Lightbox Modal Reader -->
+    <div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <button class="nav-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+        
+        <div class="modal-wrapper">
+            <img class="modal-content" id="modalImg">
+            <div class="modal-counter" id="modalCounter">SLIDE 01 / 31</div>
+        </div>
+
+        <button class="nav-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Supanat25676 | Built with GitHub Pages</p>
+    </footer>
+
     <script>
         const container = document.getElementById('mesh-container');
-        const total = 31;
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalCounter = document.getElementById('modalCounter');
+        const totalSlides = 31;
+        let currentIndex = 1;
 
-        for (let i = 1; i <= total; i++) {
+        // สร้างการ์ดสไลด์ 1 ถึง 31 อัตโนมัติ
+        for (let i = 1; i <= totalSlides; i++) {
             const card = document.createElement('div');
             card.className = 'mesh-card';
+            card.onclick = () => openModal(i);
             card.innerHTML = `
                 <div class="card-img-holder">
                     <img src="${i}.png" alt="Slide ${i}" loading="lazy">
                 </div>
                 <div class="card-meta">
                     <span class="title">NODE_${i.toString().padStart(2, '0')}</span>
-                    <span class="tag">SLIDE ${i}</span>
+                    <span class="tag">READ SLIDE</span>
                 </div>
             `;
             container.appendChild(card);
         }
+
+        // ระบบเปิดอ่านสไลด์ใหญ่ (Modal Reader)
+        function openModal(index) {
+            currentIndex = index;
+            modal.style.display = "flex";
+            updateModalContent();
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex > totalSlides) currentIndex = 1;
+            if (currentIndex < 1) currentIndex = totalSlides;
+            updateModalContent();
+        }
+
+        function updateModalContent() {
+            modalImg.src = `${currentIndex}.png`;
+            modalCounter.innerText = `SLIDE ${currentIndex.toString().padStart(2, '0')} / ${totalSlides}`;
+        }
+
+        // คีย์บอร์ดและคลิกพื้นที่ว่างเพื่อควบคุม
+        window.onclick = function(event) {
+            if (event.target == modal) closeModal();
+        }
+        document.addEventListener('keydown', function(e) {
+            if (modal.style.display === "flex") {
+                if (e.key === "Escape") closeModal();
+                if (e.key === "ArrowLeft") changeSlide(-1);
+                if (e.key === "ArrowRight") changeSlide(1);
+            }
+        });
     </script>
 </body>
 </html>
