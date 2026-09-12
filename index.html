@@ -422,7 +422,7 @@
         <img class="stage-img" id="stageImg" alt="">
         <div class="stage-fallback">
           <div class="num" id="fallbackNum">01</div>
-          <div class="lbl">ยังไม่ได้แนบไฟล์ภาพสำหรับสไลด์นี้ — วางไฟล์ไว้ในโฟลเดอร์ <code>slides/</code></div>
+          <div class="lbl">ไม่พบไฟล์ภาพของสไลด์นี้</div>
         </div>
         <div class="corner-bl"></div>
         <div class="corner-br"></div>
@@ -472,8 +472,8 @@
 /* ================================================================
    CONFIG — แก้ตรงนี้ให้ตรงกับสไลด์จริงของคุณ
    ================================================================
-   - ใส่ไฟล์ภาพไว้ที่โฟลเดอร์ slides/ ในรีโป ชื่อไฟล์ slide-01.jpg ... slide-31.jpg
-     (หรือแก้ path ในฟังก์ชัน src() ด้านล่างให้ตรงกับของจริง)
+   - ไฟล์ภาพอยู่ที่โฟลเดอร์หลักของรีโป ชื่อไฟล์ 1.png ... 31.png (ตรงกับของจริงแล้ว)
+     ถ้าย้ายไฟล์ไปโฟลเดอร์อื่นหรือเปลี่ยนชื่อ ให้แก้ path ในฟังก์ชัน src() ด้านล่าง
    - ปรับ CATEGORIES และช่วงเลขสไลด์ของแต่ละหมวดให้ตรงกับงานจริง
 ================================================================= */
 const TOTAL_SLIDES = 31;
@@ -494,7 +494,7 @@ function categoryOf(n){
 }
 
 function src(n){
-  return `slides/slide-${String(n).padStart(2,'0')}.jpg`;
+  return `${n}.png`;
 }
 
 const SLIDES = Array.from({length: TOTAL_SLIDES}, (_, i) => {
