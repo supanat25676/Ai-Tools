@@ -1,411 +1,658 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI TOOLS GALAXIES // SUPANAT PORTFOLIO</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #050714;
-            --panel-bg: rgba(12, 16, 43, 0.75);
-            --card-bg: rgba(15, 22, 58, 0.6);
-            --accent-cyan: #00f0ff;
-            --accent-purple: #9d4edd;
-            --accent-pink: #ff007f;
-            --text-main: #ffffff;
-            --text-muted: #a6b4c9;
-            --border-glow: rgba(0, 240, 255, 0.25);
-            --font-head: 'Orbitron', sans-serif;
-            --font-body: 'Prompt', sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools Galaxies — Supanat</title>
+<meta name="description" content="แคตตาล็อกสไลด์เครื่องมือ AI คัดสรรโดย Supanat">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     DESIGN TOKENS
+     ============================================================ */
+  :root{
+    --void:      #0a0e1a;
+    --panel:     #10162a;
+    --panel-2:   #151d36;
+    --line:      #262f4a;
+    --paper:     #eae4d6;
+    --muted:     #8b96b8;
+    --gold:      #c9a24b;
+    --gold-dim:  #8a7238;
+    --teal:      #6fa8ae;
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    --font-display: 'Fraunces', serif;
+    --font-ui: 'Inter', sans-serif;
 
-        body {
-            font-family: var(--font-body);
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 40px 70px, var(--accent-cyan), rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 90px 40px, var(--accent-purple), rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 160px 120px, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(157, 78, 221, 0.1) 0%, transparent 40%);
-            background-repeat: repeat;
-            background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100% 100%, 100% 100%;
-            background-attachment: fixed;
-        }
+    --sidebar-w: 250px;
+    --radius: 2px;
+  }
 
-        /* --- Navbar Area (ย้าย Navigation Menu มาไว้ตรงนี้) --- */
-        .navbar {
-            background: rgba(5, 7, 20, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 12px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(1100px 600px at 12% -10%, rgba(201,162,75,.08), transparent 60%),
+      radial-gradient(900px 700px at 100% 110%, rgba(111,168,174,.08), transparent 60%),
+      var(--void);
+    color: var(--paper);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  button{ font-family:inherit; }
 
-        .brand {
-            font-family: var(--font-head);
-            font-size: 1.3rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
-        }
+  a{ color: var(--teal); }
+  :focus-visible{ outline: 2px solid var(--gold); outline-offset: 3px; }
 
-        /* เมนูนำทางด้านบน */
-        .top-nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            list-style: none;
-        }
+  /* ============================================================
+     LAYOUT SHELL
+     ============================================================ */
+  .app{
+    display:grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "top top"
+      "side main"
+      "foot foot";
+    min-height:100vh;
+  }
 
-        .top-nav-menu li {
-            padding: 8px 16px;
-            border-radius: 20px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+  /* ---------- top bar ---------- */
+  .topbar{
+    grid-area: top;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:24px;
+    padding: 28px 40px 22px;
+    border-bottom:1px solid var(--line);
+  }
+  .brand-mark{
+    font-family: var(--font-display);
+    font-weight:600;
+    font-size: clamp(22px, 2.4vw, 30px);
+    letter-spacing:.01em;
+    color: var(--paper);
+  }
+  .brand-mark em{
+    font-style: italic;
+    font-weight:500;
+    color: var(--gold);
+  }
+  .brand-sub{
+    margin-top:4px;
+    font-size:13px;
+    color: var(--muted);
+    max-width: 46ch;
+  }
+  .topbar-right{
+    text-align:right;
+    font-size:12.5px;
+    color: var(--muted);
+    line-height:1.6;
+    white-space:nowrap;
+  }
 
-        .top-nav-menu li.active, .top-nav-menu li:hover {
-            background: rgba(0, 240, 255, 0.12);
-            color: var(--accent-cyan);
-            border-color: var(--border-glow);
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-        }
+  /* ---------- sidebar ---------- */
+  .sidebar{
+    grid-area: side;
+    border-right:1px solid var(--line);
+    padding: 26px 20px;
+  }
+  .sidebar h2{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.08em;
+    color: var(--muted);
+    margin: 0 0 14px 4px;
+    text-transform: uppercase;
+  }
+  .cat-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px;}
+  .cat-btn{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    background:transparent;
+    border:none;
+    color: var(--paper);
+    padding:10px 12px;
+    border-radius: var(--radius);
+    font-size:14.5px;
+    text-align:left;
+    cursor:pointer;
+    border-left:2px solid transparent;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .cat-btn:hover{ background: rgba(255,255,255,.03); }
+  .cat-btn.active{
+    border-left-color: var(--gold);
+    background: rgba(201,162,75,.08);
+    color: var(--gold);
+  }
+  .cat-count{
+    font-size:12px;
+    color: var(--muted);
+  }
+  .cat-btn.active .cat-count{ color: var(--gold-dim); }
 
-        .nav-status {
-            font-family: var(--font-head);
-            font-size: 0.75rem;
-            color: var(--accent-cyan);
-            border: 1px solid var(--border-glow);
-            padding: 5px 14px;
-            border-radius: 20px;
-            background: rgba(0, 240, 255, 0.05);
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-            letter-spacing: 1px;
-        }
+  .sidebar-note{
+    margin-top:26px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color: var(--muted);
+    line-height:1.7;
+  }
 
-        /* --- Main Content Area --- */
-        .app-container {
-            max-width: 1600px;
-            margin: 0 auto;
-            width: 100%;
-            padding: 30px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
+  /* ---------- main / stage ---------- */
+  .main{
+    grid-area: main;
+    padding: 30px 40px 40px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    min-width:0;
+  }
 
-        .hero-banner {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-glow);
-            border-radius: 16px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-        }
+  .stage-wrap{
+    position:relative;
+  }
+  .stage-frame{
+    position:relative;
+    aspect-ratio: 16/9;
+    background: var(--panel);
+    border:1px solid var(--line);
+    overflow:hidden;
+    cursor: zoom-in;
+  }
+  /* viewfinder corner ticks — the one bold recurring motif */
+  .stage-frame::before,
+  .stage-frame::after,
+  .corner-br, .corner-bl{
+    content:"";
+    position:absolute;
+    width:18px; height:18px;
+    border-color: var(--gold);
+    border-style:solid;
+    opacity:.85;
+    pointer-events:none;
+  }
+  .stage-frame::before{ top:10px; left:10px; border-width:1.5px 0 0 1.5px; }
+  .stage-frame::after{ top:10px; right:10px; border-width:1.5px 1.5px 0 0; }
+  .corner-bl{ bottom:10px; left:10px; border-width:0 0 1.5px 1.5px; }
+  .corner-br{ bottom:10px; right:10px; border-width:0 1.5px 1.5px 0; }
 
-        .hero-banner h1 {
-            font-family: var(--font-head);
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-            background: linear-gradient(90deg, #ffffff, var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+  .stage-img{
+    width:100%; height:100%; object-fit:contain;
+    background: var(--panel);
+  }
+  .stage-fallback{
+    display:none;
+    position:absolute; inset:0;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:
+      linear-gradient(155deg, var(--panel-2), var(--panel));
+    text-align:center;
+    padding: 20px;
+  }
+  .stage-frame.has-error .stage-img{ display:none; }
+  .stage-frame.has-error .stage-fallback{ display:flex; }
+  .stage-fallback .num{
+    font-family: var(--font-display);
+    font-size: 44px;
+    color: var(--gold);
+    line-height:1;
+  }
+  .stage-fallback .lbl{
+    font-size:13px;
+    color: var(--muted);
+    max-width:34ch;
+  }
 
-        .hero-banner p { color: var(--text-muted); font-size: 1rem; }
+  .stage-nav{
+    position:absolute;
+    top:0; bottom:0;
+    width:64px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    border:none;
+    color: var(--paper);
+    cursor:pointer;
+    opacity:.5;
+    transition: opacity .15s ease, background-color .15s ease;
+  }
+  .stage-nav:hover{ opacity:1; background: rgba(0,0,0,.15); }
+  .stage-nav.prev{ left:0; }
+  .stage-nav.next{ right:0; }
+  .stage-nav svg{ width:22px; height:22px; }
 
-        /* --- Grid Layout --- */
-        .mesh-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-        }
+  /* ---------- meta row: counter + category + scrubber ---------- */
+  .meta-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:13px;
+    color: var(--muted);
+    gap:20px;
+  }
+  .meta-left{ display:flex; align-items:baseline; gap:10px; white-space:nowrap; }
+  .meta-count{ font-family: var(--font-display); color: var(--paper); font-size:16px; }
+  .meta-cat{ color: var(--teal); }
 
-        .mesh-card {
-            background: var(--card-bg);
-            border-radius: 14px;
-            border: 1px solid rgba(0, 240, 255, 0.15);
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            cursor: pointer;
-            position: relative;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-        }
+  .expand-btn{
+    background:none; border:1px solid var(--line); color:var(--muted);
+    font-size:12px; padding:7px 12px; border-radius:var(--radius);
+    cursor:pointer; white-space:nowrap;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .expand-btn:hover{ border-color: var(--gold); color: var(--gold); }
 
-        .mesh-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.35), 0 0 10px rgba(157, 78, 221, 0.2);
-        }
+  .scrub{
+    position:relative;
+    height:3px;
+    background: var(--line);
+    cursor:pointer;
+  }
+  .scrub-fill{
+    position:absolute; top:0; left:0; bottom:0;
+    background: var(--gold);
+    width:0%;
+    transition: width .2s ease;
+  }
 
-        .card-img-holder {
-            width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            background: #000;
-        }
+  /* ---------- filmstrip ---------- */
+  .filmstrip{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:6px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  .filmstrip::-webkit-scrollbar{ height:6px; }
+  .filmstrip::-webkit-scrollbar-thumb{ background: var(--line); }
 
-        .card-img-holder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
+  .thumb{
+    flex: 0 0 auto;
+    width:92px;
+    aspect-ratio:16/9;
+    background: var(--panel);
+    border:none;
+    border-bottom:2px solid transparent;
+    padding:0;
+    cursor:pointer;
+    position:relative;
+    opacity:.5;
+    transition: opacity .15s ease, border-color .15s ease;
+  }
+  .thumb:hover{ opacity:.85; }
+  .thumb.active{ opacity:1; border-bottom-color: var(--gold); }
+  .thumb img{ width:100%; height:100%; object-fit:cover; }
+  .thumb-num{
+    position:absolute; bottom:3px; right:5px;
+    font-size:10px; color: var(--paper);
+    background: rgba(0,0,0,.55);
+    padding:1px 4px;
+  }
+  .thumb.has-error img{ display:none; }
+  .thumb.has-error::after{
+    content: attr(data-num);
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-display);
+    color: var(--muted);
+    font-size:14px;
+  }
 
-        .mesh-card:hover .card-img-holder img { transform: scale(1.06); }
+  /* ---------- footer ---------- */
+  .footer{
+    grid-area: foot;
+    border-top:1px solid var(--line);
+    padding: 16px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12.5px;
+    color: var(--muted);
+  }
+  .footer a{ color:var(--muted); text-decoration:none; }
+  .footer a:hover{ color: var(--gold); }
 
-        .card-meta {
-            padding: 14px 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(12, 16, 43, 0.9);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
+  /* ============================================================
+     LIGHTBOX
+     ============================================================ */
+  .lightbox{
+    position:fixed; inset:0;
+    background: rgba(6,8,15,.96);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:5vh 5vw;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img{ max-width:100%; max-height:88vh; object-fit:contain; margin:auto; }
+  .lightbox-close{
+    position:absolute; top:22px; right:28px;
+    background:none; border:1px solid var(--line); color: var(--paper);
+    width:38px; height:38px; cursor:pointer; font-size:18px;
+  }
+  .lightbox-close:hover{ border-color: var(--gold); color: var(--gold); }
+  .lightbox .stage-nav{ opacity:.6; }
+  .lightbox-counter{
+    position:absolute; bottom:22px; left:50%; transform:translateX(-50%);
+    font-size:13px; color: var(--muted);
+  }
 
-        .card-meta .title { font-family: var(--font-head); font-size: 0.85rem; color: var(--text-main); }
-        .card-meta .tag {
-            font-size: 0.75rem;
-            color: var(--accent-cyan);
-            border: 1px solid var(--border-glow);
-            padding: 2px 10px;
-            border-radius: 12px;
-            background: rgba(0, 240, 255, 0.08);
-            letter-spacing: 0.5px;
-        }
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 860px){
+    .app{
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "top"
+        "side"
+        "main"
+        "foot";
+    }
+    .sidebar{
+      border-right:none;
+      border-bottom:1px solid var(--line);
+      padding:16px 20px;
+    }
+    .cat-list{ flex-direction:row; overflow-x:auto; gap:8px; }
+    .cat-btn{ white-space:nowrap; border-left:none; border-bottom:2px solid transparent; }
+    .cat-btn.active{ border-bottom-color: var(--gold); border-left-color:transparent; }
+    .sidebar-note{ display:none; }
+    .main{ padding: 22px 18px 30px; }
+    .topbar{ padding:22px 20px 16px; flex-direction:column; gap:8px; }
+    .topbar-right{ text-align:left; }
+    .footer{ padding:14px 20px; flex-direction:column; gap:6px; text-align:center; }
+    .stage-nav{ width:44px; }
+  }
 
-        /* --- Fullscreen Modal Reader --- */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(5, 7, 20, 0.95);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(12px);
-            padding: 20px;
-        }
-
-        .modal-wrapper {
-            position: relative;
-            max-width: 90vw;
-            max-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .modal-content {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 12px;
-            border: 1.5px solid var(--accent-cyan);
-            box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
-            object-fit: contain;
-        }
-
-        .modal-counter {
-            margin-top: 15px;
-            font-family: var(--font-head);
-            color: var(--accent-cyan);
-            font-size: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 25px; right: 35px;
-            color: var(--text-main);
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            z-index: 1010;
-        }
-        .close-btn:hover { color: var(--accent-pink); }
-
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(12, 16, 43, 0.85);
-            color: var(--accent-cyan);
-            border: 1px solid var(--accent-cyan);
-            font-size: 28px;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1010;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-        }
-        .nav-btn:hover {
-            background: var(--accent-cyan);
-            color: #000;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
-        }
-        .prev-btn { left: 30px; }
-        .next-btn { right: 30px; }
-
-        footer {
-            text-align: center;
-            padding: 25px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .navbar { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
-            .top-nav-menu { flex-wrap: wrap; }
-            .nav-btn { width: 40px; height: 40px; font-size: 20px; }
-            .prev-btn { left: 10px; }
-            .next-btn { right: 10px; }
-        }
-    </style>
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; scroll-behavior:auto !important; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- Header / Navbar พร้อม Navigation Menu ที่ย้ายมาไว้ด้านบน -->
-    <nav class="navbar">
-        <div class="brand">AI TOOLS // GALAXIES</div>
-        
-        <!-- เมนูนำทางและหมวดหัวข้อสไลด์ -->
-        <ul class="top-nav-menu">
-            <li class="active">🪐 All Slides (31)</li>
-            <li onclick="openModal(1)">🚀 Cover Slide</li>
-            <li onclick="openModal(2)">🛠️ Tools Overview</li>
-            <li onclick="openModal(5)">💡 AI Workflows</li>
-        </ul>
+<div class="app">
 
-        <div class="nav-status">GALAXY ONLINE</div>
-    </nav>
-
-    <div class="app-container">
-        <!-- Main Content Area -->
-        <main class="content-area">
-            <div class="hero-banner">
-                <h1>AI TOOLS PRESENTATION GALAXIES</h1>
-                <p>🚀 พอร์ตโฟลิโอรวมเครื่องมือ AI อัจฉริยะ (คลิกที่สไลด์เพื่อเปิดอ่านสไลด์ใหญ่แบบสไลด์โชว์ได้ทันที)</p>
-            </div>
-
-            <div class="mesh-grid" id="mesh-container">
-                <!-- Javascript จะโหลดสไลด์ 1 - 31 มาวางที่นี่ -->
-            </div>
-        </main>
+  <!-- ============ TOP BAR ============ -->
+  <header class="topbar">
+    <div>
+      <div class="brand-mark">AI TOOLS <em>GALAXIES</em></div>
+      <div class="brand-sub">แคตตาล็อกสไลด์เครื่องมือ AI คัดสรรและเวิร์กโฟลว์การใช้งานจริง</div>
     </div>
+    <div class="topbar-right">
+      พอร์ตโฟลิโอโดย Supanat<br>
+      อัปเดตล่าสุด 2026
+    </div>
+  </header>
 
-    <!-- Fullscreen Lightbox Modal Reader -->
-    <div id="imageModal" class="modal">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <button class="nav-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
-        
-        <div class="modal-wrapper">
-            <img class="modal-content" id="modalImg">
-            <div class="modal-counter" id="modalCounter">SLIDE 01 / 31</div>
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <h2>หมวดหมู่</h2>
+    <ul class="cat-list" id="catList"></ul>
+    <p class="sidebar-note">
+      ใช้ลูกศร ← → บนคีย์บอร์ดเพื่อเปลี่ยนสไลด์ หรือคลิกภาพเพื่อดูแบบเต็มจอ
+    </p>
+  </aside>
+
+  <!-- ============ MAIN STAGE ============ -->
+  <main class="main">
+    <div class="stage-wrap">
+      <div class="stage-frame" id="stageFrame">
+        <img class="stage-img" id="stageImg" alt="">
+        <div class="stage-fallback">
+          <div class="num" id="fallbackNum">01</div>
+          <div class="lbl">ยังไม่ได้แนบไฟล์ภาพสำหรับสไลด์นี้ — วางไฟล์ไว้ในโฟลเดอร์ <code>slides/</code></div>
         </div>
-
-        <button class="nav-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+        <div class="corner-bl"></div>
+        <div class="corner-br"></div>
+        <button class="stage-nav prev" id="prevBtn" aria-label="สไลด์ก่อนหน้า">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <button class="stage-nav next" id="nextBtn" aria-label="สไลด์ถัดไป">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="scrub" id="scrub"><div class="scrub-fill" id="scrubFill"></div></div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Supanat25676 | Built with GitHub Pages</p>
-    </footer>
+    <div class="meta-row">
+      <div class="meta-left">
+        <span class="meta-count" id="metaCount">01 / 31</span>
+        <span class="meta-cat" id="metaCat">ภาพรวมเครื่องมือ</span>
+      </div>
+      <button class="expand-btn" id="expandBtn">ดูแบบเต็มจอ</button>
+    </div>
 
-    <script>
-        const container = document.getElementById('mesh-container');
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImg');
-        const modalCounter = document.getElementById('modalCounter');
-        const totalSlides = 31;
-        let currentIndex = 1;
+    <div class="filmstrip" id="filmstrip"></div>
+  </main>
 
-        // สร้างการ์ดสไลด์ 1 ถึง 31 อัตโนมัติ
-        for (let i = 1; i <= totalSlides; i++) {
-            const card = document.createElement('div');
-            card.className = 'mesh-card';
-            card.onclick = () => openModal(i);
-            card.innerHTML = `
-                <div class="card-img-holder">
-                    <img src="${i}.png" alt="Slide ${i}" loading="lazy">
-                </div>
-                <div class="card-meta">
-                    <span class="title">NODE_${i.toString().padStart(2, '0')}</span>
-                    <span class="tag">READ SLIDE</span>
-                </div>
-            `;
-            container.appendChild(card);
-        }
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <span>© 2026 Supanat</span>
+    <span>สร้างด้วย GitHub Pages</span>
+  </footer>
 
-        // ระบบเปิดอ่านสไลด์ใหญ่ (Modal Reader)
-        function openModal(index) {
-            currentIndex = index;
-            modal.style.display = "flex";
-            updateModalContent();
-        }
+</div>
 
-        function closeModal() {
-            modal.style.display = "none";
-        }
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="ปิด">✕</button>
+  <button class="stage-nav prev" id="lbPrev" aria-label="สไลด์ก่อนหน้า">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg>
+  </button>
+  <img id="lightboxImg" alt="">
+  <button class="stage-nav next" id="lbNext" aria-label="สไลด์ถัดไป">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
 
-        function changeSlide(direction) {
-            currentIndex += direction;
-            if (currentIndex > totalSlides) currentIndex = 1;
-            if (currentIndex < 1) currentIndex = totalSlides;
-            updateModalContent();
-        }
+<script>
+/* ================================================================
+   CONFIG — แก้ตรงนี้ให้ตรงกับสไลด์จริงของคุณ
+   ================================================================
+   - ใส่ไฟล์ภาพไว้ที่โฟลเดอร์ slides/ ในรีโป ชื่อไฟล์ slide-01.jpg ... slide-31.jpg
+     (หรือแก้ path ในฟังก์ชัน src() ด้านล่างให้ตรงกับของจริง)
+   - ปรับ CATEGORIES และช่วงเลขสไลด์ของแต่ละหมวดให้ตรงกับงานจริง
+================================================================= */
+const TOTAL_SLIDES = 31;
 
-        function updateModalContent() {
-            modalImg.src = `${currentIndex}.png`;
-            modalCounter.innerText = `SLIDE ${currentIndex.toString().padStart(2, '0')} / ${totalSlides}`;
-        }
+const CATEGORIES = [
+  { id: 'all',      label: 'ทั้งหมด',            range: null      },
+  { id: 'cover',    label: 'หน้าปก',              range: [1, 1]    },
+  { id: 'tools',    label: 'ภาพรวมเครื่องมือ',    range: [2, 20]   },
+  { id: 'workflow', label: 'เวิร์กโฟลว์ AI',       range: [21, 31]  },
+];
 
-        // คีย์บอร์ดและคลิกพื้นที่ว่างเพื่อควบคุม
-        window.onclick = function(event) {
-            if (event.target == modal) closeModal();
-        }
-        document.addEventListener('keydown', function(e) {
-            if (modal.style.display === "flex") {
-                if (e.key === "Escape") closeModal();
-                if (e.key === "ArrowLeft") changeSlide(-1);
-                if (e.key === "ArrowRight") changeSlide(1);
-            }
-        });
-    </script>
+function categoryOf(n){
+  for(const c of CATEGORIES){
+    if(c.id === 'all') continue;
+    if(n >= c.range[0] && n <= c.range[1]) return c;
+  }
+  return CATEGORIES[2];
+}
+
+function src(n){
+  return `slides/slide-${String(n).padStart(2,'0')}.jpg`;
+}
+
+const SLIDES = Array.from({length: TOTAL_SLIDES}, (_, i) => {
+  const n = i + 1;
+  const cat = categoryOf(n);
+  return { n, src: src(n), category: cat.id, categoryLabel: cat.label };
+});
+
+/* ================================================================
+   STATE
+================================================================= */
+let activeCategory = 'all';
+let currentIndex = 0; // index within the *filtered* list
+
+const els = {
+  catList:    document.getElementById('catList'),
+  filmstrip:  document.getElementById('filmstrip'),
+  stageFrame: document.getElementById('stageFrame'),
+  stageImg:   document.getElementById('stageImg'),
+  fallbackNum:document.getElementById('fallbackNum'),
+  prevBtn:    document.getElementById('prevBtn'),
+  nextBtn:    document.getElementById('nextBtn'),
+  metaCount:  document.getElementById('metaCount'),
+  metaCat:    document.getElementById('metaCat'),
+  scrub:      document.getElementById('scrub'),
+  scrubFill:  document.getElementById('scrubFill'),
+  expandBtn:  document.getElementById('expandBtn'),
+  lightbox:   document.getElementById('lightbox'),
+  lightboxImg:document.getElementById('lightboxImg'),
+  lightboxCounter: document.getElementById('lightboxCounter'),
+  lightboxClose: document.getElementById('lightboxClose'),
+  lbPrev:     document.getElementById('lbPrev'),
+  lbNext:     document.getElementById('lbNext'),
+};
+
+function filteredSlides(){
+  if(activeCategory === 'all') return SLIDES;
+  return SLIDES.filter(s => s.category === activeCategory);
+}
+
+/* ---------------- sidebar / category chips ---------------- */
+function renderCategories(){
+  els.catList.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    const count = cat.id === 'all'
+      ? SLIDES.length
+      : SLIDES.filter(s => s.category === cat.id).length;
+
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn' + (cat.id === activeCategory ? ' active' : '');
+    btn.innerHTML = `<span>${cat.label}</span><span class="cat-count">${count}</span>`;
+    btn.addEventListener('click', () => {
+      activeCategory = cat.id;
+      currentIndex = 0;
+      renderCategories();
+      renderFilmstrip();
+      renderStage();
+    });
+    li.appendChild(btn);
+    els.catList.appendChild(li);
+  });
+}
+
+/* ---------------- filmstrip ---------------- */
+function renderFilmstrip(){
+  els.filmstrip.innerHTML = '';
+  filteredSlides().forEach((slide, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'thumb' + (idx === currentIndex ? ' active' : '');
+    btn.dataset.num = String(slide.n).padStart(2,'0');
+    const img = document.createElement('img');
+    img.src = slide.src;
+    img.alt = `สไลด์ ${slide.n}`;
+    img.loading = 'lazy';
+    img.addEventListener('error', () => btn.classList.add('has-error'));
+    btn.appendChild(img);
+    const num = document.createElement('span');
+    num.className = 'thumb-num';
+    num.textContent = String(slide.n).padStart(2,'0');
+    btn.appendChild(num);
+    btn.addEventListener('click', () => { currentIndex = idx; renderStage(); renderFilmstrip(); });
+    els.filmstrip.appendChild(btn);
+  });
+  const activeThumb = els.filmstrip.querySelector('.thumb.active');
+  if(activeThumb) activeThumb.scrollIntoView({ inline:'center', block:'nearest' });
+}
+
+/* ---------------- main stage ---------------- */
+function renderStage(){
+  const list = filteredSlides();
+  if(currentIndex >= list.length) currentIndex = 0;
+  const slide = list[currentIndex];
+  if(!slide) return;
+
+  els.stageFrame.classList.remove('has-error');
+  els.stageImg.src = slide.src;
+  els.stageImg.alt = `สไลด์ ${slide.n}: ${slide.categoryLabel}`;
+  els.fallbackNum.textContent = String(slide.n).padStart(2,'0');
+
+  els.metaCount.textContent = `${String(currentIndex+1).padStart(2,'0')} / ${String(list.length).padStart(2,'0')}`;
+  els.metaCat.textContent = slide.categoryLabel;
+
+  const pct = list.length <= 1 ? 100 : (currentIndex/(list.length-1))*100;
+  els.scrubFill.style.width = pct + '%';
+}
+
+els.stageImg.addEventListener('error', () => els.stageFrame.classList.add('has-error'));
+
+/* ---------------- navigation ---------------- */
+function go(delta){
+  const list = filteredSlides();
+  currentIndex = (currentIndex + delta + list.length) % list.length;
+  renderStage();
+  renderFilmstrip();
+  if(els.lightbox.classList.contains('open')) renderLightbox();
+}
+els.prevBtn.addEventListener('click', () => go(-1));
+els.nextBtn.addEventListener('click', () => go(1));
+
+els.scrub.addEventListener('click', (e) => {
+  const rect = els.scrub.getBoundingClientRect();
+  const ratio = (e.clientX - rect.left) / rect.width;
+  const list = filteredSlides();
+  currentIndex = Math.min(list.length-1, Math.max(0, Math.round(ratio*(list.length-1))));
+  renderStage();
+  renderFilmstrip();
+});
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'ArrowLeft') go(-1);
+  if(e.key === 'ArrowRight') go(1);
+  if(e.key === 'Escape') closeLightbox();
+});
+
+/* ---------------- lightbox ---------------- */
+function renderLightbox(){
+  const list = filteredSlides();
+  const slide = list[currentIndex];
+  els.lightboxImg.src = slide.src;
+  els.lightboxImg.alt = `สไลด์ ${slide.n}`;
+  els.lightboxCounter.textContent = `${String(currentIndex+1).padStart(2,'0')} / ${String(list.length).padStart(2,'0')} · ${slide.categoryLabel}`;
+}
+function openLightbox(){ renderLightbox(); els.lightbox.classList.add('open'); }
+function closeLightbox(){ els.lightbox.classList.remove('open'); }
+
+els.stageFrame.addEventListener('click', openLightbox);
+els.expandBtn.addEventListener('click', openLightbox);
+els.lightboxClose.addEventListener('click', closeLightbox);
+els.lightbox.addEventListener('click', (e) => { if(e.target === els.lightbox) closeLightbox(); });
+els.lbPrev.addEventListener('click', () => go(-1));
+els.lbNext.addEventListener('click', () => go(1));
+
+/* ---------------- init ---------------- */
+renderCategories();
+renderFilmstrip();
+renderStage();
+</script>
+
 </body>
 </html>
