@@ -1,1 +1,235 @@
+ได้เลยครับ! สาเหตุที่ตอนนี้เปิดเว็บแล้วขึ้นเป็นตัวอักษรธรรมดาหรือไม่แสดงผลความสวยงาม เป็นเพราะ GitHub Pages ต้องการไฟล์ชื่อ index.html ที่มีโค้ดจัดตกแต่งหน้าตา (Styling) ให้สวยงามครับ
 
+ก๊อปปี้โค้ด HTML + CSS ด้านล่างนี้ไปสร้างเป็นไฟล์ index.html ใหม่ใน GitHub ได้เลย หน้าเว็บจะกลายเป็น Portfolio โทนเข้ม สวยงาม สมบูรณ์แบบทันทีครับ:
+
+HTML
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Experiments & Financial Analytics Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent: #38bdf8;
+            --accent-gold: #fbbf24;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #ef4444;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btn-pdf:hover {
+            background-color: #dc2626;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            color: var(--text-sub);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        li strong {
+            color: var(--text-main);
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #0284c7;
+            color: white;
+        }
+
+        td strong {
+            color: var(--accent);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background-color: #334155;
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🤖 AI Experiments & Financial Analytics Project</h1>
+        <p class="subtitle">โปรเจกต์สรุปการทดลองใช้งาน AI Models, การประมวลผลข้อมูล (Data Pipeline) และการพัฒนาแอปพลิเคชันช่วยคำนวณความเสี่ยงการลงทุน (XAU/USD)</p>
+        <a href="./การตัดสิน%20AI%20(1)_compressed.pdf" target="_blank" class="btn-pdf">
+            <i class="fas fa-file-pdf"></i> เปิดดูเอกสารนำเสนอฉบับเต็ม (PDF)
+        </a>
+    </header>
+
+    <h2 class="section-title"><i class="fas fa-star" style="color: #fbbf24;"></i> Highlight Projects</h2>
+
+    <div class="card">
+        <h3>1. 🥇 XAU Power - Gold Investment & Risk Management App</h3>
+        <p style="color: var(--text-sub); margin-bottom: 1rem;">แอปพลิเคชันพัฒนาผ่าน <strong>Google AI Studio</strong> ช่วยวิเคราะห์ตลาดและคำนวณ Money Management สำหรับการเทรดทองคำ (XAU/USD) เพื่อลดอารมณ์และเพิ่มความแม่นยำในการตัดสินใจ</p>
+        <ul>
+            <li><strong>Automatic Lot Size:</strong> คำนวณ Lot Size อัตโนมัติจาก Account Balance, % Risk Per Trade และ Leverage (เช่น 1:200)</li>
+            <li><strong>Market Analysis:</strong> วิเคราะห์โครงสร้างตลาด (Market Trend / Sideway Up) และสภาวะตลาดแบบ Real-time</li>
+            <li><strong>AI Assistant:</strong> คอยตอบข้อสงสัยและให้คำแนะนำเกี่ยวกับการลงทุน</li>
+            <li><strong>Future Roadmap:</strong> เพิ่มระบบคำนวณจุดเข้าซื้อ (Entry Point) และจุดตัดขาดทุน (Stop Loss / Take Profit) บนกราฟโดยตรง</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>2. 🧹 Data Cleaning & Merging Pipeline</h3>
+        <p style="color: var(--text-sub); margin-bottom: 1rem;">กระบวนการทำความสะอาดและรวมชุดข้อมูล (Data Cleaning & Merging Rules) ระหว่างข้อมูล Social Media กับพฤติกรรมเชิงลึก</p>
+        <ul>
+            <li><strong>Text to Numeric:</strong> แปลงข้อความตัวเลข เช่น <code>"twenty"</code> ➔ <code>20.0</code></li>
+            <li><strong>Typo Correction:</strong> แก้ไขคำผิด เช่น <code>"mal"</code> ➔ <code>"Male"</code>, <code>"femail"</code> ➔ <code>"Female"</code></li>
+            <li><strong>Standardization:</strong> ปรับตัวอักษรให้เป็นมาตรฐาน เช่น <code>"master"</code> ➔ <code>"Master"</code></li>
+            <li><strong>Missing Values (NaNs):</strong> แทนที่ช่องว่างด้วยค่า Median (สำหรับตัวเลข) และ Mode (สำหรับข้อความ)</li>
+            <li><strong>Data Merging:</strong> เชื่อมตารางข้อมูล (Inner Join) ด้วยตัวแปร <code>Age</code> และ <code>Gender</code> เพื่อศึกษาความสัมพันธ์เรื่องภาวะอารมณ์/ความเครียด (Depression Score)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>3. 🧪 AI Model Comparison (OpenRouter API)</h3>
+        <p style="color: var(--text-sub); margin-bottom: 1rem;">การทดสอบและเปรียบเทียบคำตอบจาก AI Models ต่างๆ ผ่าน OpenRouter API:</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model Name</th>
+                        <th>คุณลักษณะและจุดเด่น</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>NVIDIA: Nemotron 3.5 Lightning</strong></td>
+                        <td>สรุปอ่านง่าย มีการใช้สัญลักษณ์ Visual ช่วยดึงสายตา เสนอแนวทางเจาะจงในการศึกษาต่อได้ดี</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Poolside: Laguna S 2.1</strong></td>
+                        <td>เหมาะกับคนที่ชอบเนื้อหาเรียบๆ มีโครงสร้างหัวข้อชัดเจนแบบตำราเรียน</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2 class="section-title"><i class="fas fa-tools" style="color: #38bdf8;"></i> Tech Stack & Tools</h2>
+    <div class="card">
+        <div class="tech-tags">
+            <span class="tag">Google AI Studio</span>
+            <span class="tag">OpenRouter API</span>
+            <span class="tag">NVIDIA Nemotron 3.5</span>
+            <span class="tag">Poolside Laguna S 2.1</span>
+            <span class="tag">Python</span>
+            <span class="tag">Data Preprocessing</span>
+            <span class="tag">Forex / Gold (XAU/USD)</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
