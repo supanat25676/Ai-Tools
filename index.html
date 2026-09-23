@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI & Analytics Portfolio | Supanat</title>
+    <title>AI Presentation & Portfolio Showcase</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0a0e17;
-            --card-bg: rgba(22, 31, 49, 0.7);
+            --card-bg: rgba(22, 31, 49, 0.75);
             --primary-neon: #00f0ff;
-            --secondary-neon: #7000ff;
+            --accent-purple: #8a2be2;
             --accent-gold: #ffd700;
             --text-main: #f0f6fc;
-            --text-sub: #8b949e;
-            --border-glow: rgba(0, 240, 255, 0.2);
+            --text-sub: #94a3b8;
+            --border-glow: rgba(0, 240, 255, 0.25);
         }
 
         * {
@@ -28,8 +28,8 @@
         body {
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.15) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.15) 0%, transparent 40%);
             color: var(--text-main);
             min-height: 100vh;
             padding: 2rem 1rem;
@@ -43,14 +43,13 @@
         /* Header Area */
         header {
             text-align: center;
-            margin-bottom: 2.5rem;
-            position: relative;
+            margin-bottom: 2rem;
         }
 
         .title-glow {
             font-family: 'Orbitron', 'Kanit', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 900;
+            font-size: 2.3rem;
+            font-weight: 800;
             background: linear-gradient(135deg, var(--primary-neon), #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -62,32 +61,13 @@
 
         .subtitle {
             color: var(--text-sub);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             max-width: 750px;
             margin: 0 auto 1.5rem auto;
             font-weight: 300;
         }
 
-        .btn-action {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: linear-gradient(135deg, #ef4444, #b91c1c);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn-action:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(239, 68, 68, 0.7);
-        }
-
-        /* Custom Image Slider Showcase */
+        /* Portfolio Image Slider Showcase */
         .slider-section {
             background: var(--card-bg);
             border: 1px solid var(--border-glow);
@@ -95,8 +75,7 @@
             padding: 1.5rem;
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            margin-bottom: 3rem;
-            position: relative;
+            margin-bottom: 2.5rem;
         }
 
         .slider-header {
@@ -110,7 +89,7 @@
         .slider-title {
             font-family: 'Orbitron', sans-serif;
             color: var(--primary-neon);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -119,10 +98,10 @@
         .slider-container {
             position: relative;
             width: 100%;
-            height: 520px;
+            height: 550px;
             border-radius: 12px;
             overflow: hidden;
-            background-color: #000;
+            background-color: #050811;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -138,20 +117,19 @@
 
         .slider-container img.active {
             display: block;
-            animation: fadeIn 0.4s ease-in-out;
+            animation: fadeIn 0.3s ease-in-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0.4; }
+            from { opacity: 0.3; }
             to { opacity: 1; }
         }
 
-        /* Slider Controls */
         .slide-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(10, 14, 23, 0.7);
+            background: rgba(10, 14, 23, 0.8);
             color: var(--primary-neon);
             border: 1px solid var(--primary-neon);
             width: 45px;
@@ -179,20 +157,20 @@
             position: absolute;
             bottom: 15px;
             right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 0.3rem 0.8rem;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 0.3rem 0.9rem;
             border-radius: 20px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.85rem;
-            color: var(--text-sub);
+            color: var(--primary-neon);
             border: 1px solid var(--border-glow);
         }
 
-        /* Grid Sections */
+        /* Details Sections */
         .section-heading {
             font-family: 'Orbitron', 'Kanit', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
             gap: 0.6rem;
@@ -205,24 +183,15 @@
             background: var(--card-bg);
             border: 1px solid var(--border-glow);
             border-radius: 16px;
-            padding: 1.8rem;
+            padding: 1.5rem;
             margin-bottom: 1.5rem;
             backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0, 240, 255, 0.4);
         }
 
         .card h3 {
             color: var(--accent-gold);
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         ul.custom-list {
@@ -233,7 +202,7 @@
         ul.custom-list li {
             position: relative;
             padding-left: 1.5rem;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
             color: var(--text-sub);
         }
 
@@ -249,7 +218,6 @@
             color: var(--text-main);
         }
 
-        /* Table Style */
         .table-responsive {
             overflow-x: auto;
             margin-top: 1rem;
@@ -264,41 +232,38 @@
         }
 
         th, td {
-            padding: 1rem;
+            padding: 0.8rem 1rem;
             text-align: left;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         th {
-            background: linear-gradient(90deg, rgba(112,0,255,0.4), rgba(0,240,255,0.2));
+            background: linear-gradient(90deg, rgba(138,43,226,0.4), rgba(0,240,255,0.2));
             color: var(--primary-neon);
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        /* Badges */
         .tags-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 1rem;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         .tag-badge {
             background: rgba(0, 240, 255, 0.08);
             border: 1px solid rgba(0, 240, 255, 0.3);
             color: var(--primary-neon);
-            padding: 0.4rem 1rem;
+            padding: 0.33rem 0.85rem;
             border-radius: 30px;
             font-size: 0.85rem;
-            font-family: 'Orbitron', 'Kanit', sans-serif;
         }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .title-glow { font-size: 1.8rem; }
+            .title-glow { font-size: 1.7rem; }
             .slider-container { height: 320px; }
-            .slide-btn { width: 35px; height: 35px; font-size: 0.9rem; }
+            .slide-btn { width: 36px; height: 36px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -307,74 +272,60 @@
 <div class="container">
     <!-- Header -->
     <header>
-        <h1 class="title-glow">AI & Financial Analytics</h1>
-        <p class="subtitle">รวบรวมผลงานการทดลองใช้งาน AI Models, การประมวลผลข้อมูล (Data Pipeline) และแอปพลิเคชันบริหารความเสี่ยงการลงทุนในตลาดทองคำ (XAU/USD)</p>
-        <a href="./การตัดสิน%20AI%20(1)_compressed.pdf" target="_blank" class="btn-action">
-            <i class="fas fa-file-pdf"></i> เปิดดูเอกสารนำเสนอฉบับเต็ม (PDF)
-        </a>
+        <h1 class="title-glow">การทดลองใช้ AI & PROJECT SHOWCASE</h1>
+        <p class="subtitle">สรุปผลการทดลองใช้งาน AI API, กระบวนการทำความสะอาดข้อมูล (Data Cleaning) และการพัฒนาแอปพลิเคชันบริหารความเสี่ยงการลงทุน XAU POWER</p>
     </header>
 
-    <!-- Interactive Image Slider Showcase -->
+    <!-- Interactive Image Slider Showcase (16 Slides) -->
     <div class="slider-section">
         <div class="slider-header">
-            <div class="slider-title"><i class="fas fa-desktop"></i> PROJECT SLIDE SHOWCASE</div>
+            <div class="slider-title"><i class="fas fa-images"></i> PRESENTATION SLIDES (16 PAGES)</div>
         </div>
         
         <div class="slider-container">
-            <!-- 31 Slides Loaded Dynamically -->
-            <img src="./1.png" class="active" alt="Slide 1">
-<img src="./2.png" alt="Slide 2">
-<img src="./3.png" alt="Slide 3">
+            <!-- ดึงรูปภาพ slide_1.png ถึง slide_16.png -->
+            <img src="./slide_1.png" class="active" alt="AI Presentation Slide 1">
+            <img src="./slide_2.png" alt="AI Presentation Slide 2">
+            <img src="./slide_3.png" alt="AI Presentation Slide 3">
+            <img src="./slide_4.png" alt="AI Presentation Slide 4">
+            <img src="./slide_5.png" alt="AI Presentation Slide 5">
+            <img src="./slide_6.png" alt="AI Presentation Slide 6">
+            <img src="./slide_7.png" alt="AI Presentation Slide 7">
+            <img src="./slide_8.png" alt="AI Presentation Slide 8">
+            <img src="./slide_9.png" alt="AI Presentation Slide 9">
+            <img src="./slide_10.png" alt="AI Presentation Slide 10">
+            <img src="./slide_11.png" alt="AI Presentation Slide 11">
+            <img src="./slide_12.png" alt="AI Presentation Slide 12">
+            <img src="./slide_13.png" alt="AI Presentation Slide 13">
+            <img src="./slide_14.png" alt="AI Presentation Slide 14">
+            <img src="./slide_15.png" alt="AI Presentation Slide 15">
+            <img src="./slide_16.png" alt="AI Presentation Slide 16">
 
-            <!-- Slide Navigation Buttons -->
+            <!-- Controls -->
             <button class="slide-btn prev-btn" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
             <button class="slide-btn next-btn" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
             
-            <div class="slide-counter" id="slideCounter">1 / 31</div>
+            <div class="slide-counter" id="slideCounter">1 / 16</div>
         </div>
     </div>
 
-    <!-- Highlight Projects Details -->
-    <h2 class="section-heading"><i class="fas fa-rocket"></i> Highlight Projects</h2>
+    <!-- Highlight Projects Overview -->
+    <h2 class="section-heading"><i class="fas fa-star"></i> Highlight Projects</h2>
 
     <div class="card">
-        <h3><i class="fas fa-coins"></i> 1. XAU Power - Gold Investment & Risk Management App</h3>
-        <p style="color: var(--text-sub); margin-bottom: 1rem;">แอปพลิเคชันพัฒนาผ่าน <strong>Google AI Studio</strong> ช่วยวิเคราะห์ตลาดและคำนวณ Money Management สำหรับการเทรดทองคำ (XAU/USD)</p>
-        <ul class="custom-list">
-            <li><strong>Automatic Lot Size:</strong> คำนวณ Lot Size อัตโนมัติจาก Account Balance, % Risk Per Trade และ Leverage (เช่น 1:200)</li>
-            <li><strong>Market Analysis:</strong> วิเคราะห์โครงสร้างตลาด (Market Trend / Sideway Up) และสภาวะตลาดแบบ Real-time</li>
-            <li><strong>AI Assistant:</strong> ช่วยให้คำแนะนำและตอบข้อสงสัยเกี่ยวกับการวางแผนลงทุน</li>
-            <li><strong>Future Roadmap:</strong> พัฒนาระบบคำนวณจุดเข้าซื้อ (Entry Point) และจุดตัดขาดทุน (Stop Loss / Take Profit) บนกราฟ</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3><i class="fas fa-filter"></i> 2. Data Cleaning & Merging Pipeline</h3>
-        <p style="color: var(--text-sub); margin-bottom: 1rem;">กระบวนการทำความสะอาดและรวมชุดข้อมูลพฤติกรรมผู้ใช้งาน Social Media</p>
-        <ul class="custom-list">
-            <li><strong>Text to Numeric:</strong> แปลงตัวเลขที่เป็นข้อความ เช่น <code>"twenty"</code> ➔ <code>20.0</code></li>
-            <li><strong>Typo Correction:</strong> แก้ไขคำที่พิมพ์ผิด เช่น <code>"mal"</code> ➔ <code>"Male"</code>, <code>"femail"</code> ➔ <code>"Female"</code></li>
-            <li><strong>Standardization:</strong> ปรับตัวอักษรให้มาตรฐาน เช่น <code>"master"</code> ➔ <code>"Master"</code></li>
-            <li><strong>Missing Values (NaNs):</strong> แทนที่ช่องว่างด้วยค่า Median (ตัวเลข) และ Mode (ข้อความ)</li>
-            <li><strong>Data Merging:</strong> เชื่อมตารางข้อมูลด้วย <code>Age</code> และ <code>Gender</code> เพื่อวิเคราะห์สภาวะความเครียด (Depression Score)</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3><i class="fas fa-microchip"></i> 3. AI Model Comparison (OpenRouter API)</h3>
-        <p style="color: var(--text-sub); margin-bottom: 1rem;">เปรียบเทียบคำตอบของ AI Models ต่างๆ ผ่าน OpenRouter API:</p>
+        <h3>🧪 1. การทดสอบและเปรียบเทียบ AI Models (OpenRouter API)</h3>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
                         <th>Model Name</th>
-                        <th>คุณลักษณะและจุดเด่น</th>
+                        <th>คุณลักษณะและผลลัพธ์</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td style="color: var(--primary-neon);"><strong>NVIDIA: Nemotron 3.5 Lightning</strong></td>
-                        <td style="color: var(--text-sub);">สรุปอ่านง่าย มีการใช้สัญลักษณ์ Visual ดึงสายตา เสนอแนวทางเจาะจงชัดเจน</td>
+                        <td style="color: var(--text-sub);">สรุปเนื้อหาอ่านง่าย มีสัญลักษณ์ Visual ช่วยดึงสายตา เสนอแนวทางเจาะจงชัดเจน</td>
                     </tr>
                     <tr>
                         <td style="color: #a855f7;"><strong>Poolside: Laguna S 2.1</strong></td>
@@ -385,8 +336,28 @@
         </div>
     </div>
 
+    <div class="card">
+        <h3>🧹 2. Data Cleaning & Merging Pipeline</h3>
+        <p style="color: var(--text-sub); margin-bottom: 0.8rem;">กระบวนการทำความสะอาดและเชื่อมโยงชุดข้อมูลการใช้งาน Social Media</p>
+        <ul class="custom-list">
+            <li><strong>Text to Numeric & Typo Correction:</strong> แปลงข้อความตัวเลข เช่น <code>"twenty"</code> ➔ <code>20.0</code> และแก้คำผิด <code>"mal"</code> ➔ <code>"Male"</code></li>
+            <li><strong>Missing Values:</strong> เติมค่าว่างด้วย Median สำหรับข้อมูลตัวเลข และ Mode สำหรับข้อมูลข้อความ</li>
+            <li><strong>Data Merging:</strong> รวมตารางด้วย Inner Join เพื่อศึกษาผลกระทบของการเล่น Social Media ต่อค่า Depression Score</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>🥇 3. XAU POWER - Gold Investment & Risk Management App</h3>
+        <p style="color: var(--text-sub); margin-bottom: 0.8rem;">พัฒนาแอปผ่าน Google AI Studio สำหรับช่วยวางแผนเทรดทองคำ (XAU/USD) เพื่อขจัดอารมณ์มนุษย์ออกจากการตัดสินใจ</p>
+        <ul class="custom-list">
+            <li><strong>Position Sizing:</strong> คำนวณ Lot Size อัตโนมัติจาก Balance, % Risk และ Leverage (เช่น 1:200)</li>
+            <li><strong>Market Analysis:</strong> วิเคราะห์แนวโน้มตลาด Real-time เช่น Sideway Up</li>
+            <li><strong>AI Investment Assistant:</strong> ช่วยตอบข้อสงสัยการลงทุนแบบเฉพาะเจาะจง</li>
+        </ul>
+    </div>
+
     <!-- Tech Stack -->
-    <h2 class="section-heading"><i class="fas fa-code"></i> Tech Stack & Tools</h2>
+    <h2 class="section-heading"><i class="fas fa-tools"></i> Tech Stack & Tools</h2>
     <div class="card">
         <div class="tags-container">
             <span class="tag-badge">Google AI Studio</span>
@@ -401,7 +372,6 @@
 </div>
 
 <script>
-    // Simple Slider Script
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slider-container img');
     const totalSlides = slides.length;
@@ -426,7 +396,6 @@
         showSlide(currentSlide - 1);
     }
 
-    // Keyboard Arrow Navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight') nextSlide();
         if (e.key === 'ArrowLeft') prevSlide();
